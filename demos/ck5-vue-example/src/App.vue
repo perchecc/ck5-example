@@ -11,10 +11,10 @@
       :config="editorConfig"
     ></ckeditor>
     <button type="button" @click="loadAndPreviewDocx">预览文件</button>
-    <div ref="previewContainer" class="docx-preview-container"></div>
+    <div id="perviewContainer" class="docx-preview-container"></div>
     <!-- 导出 -->
     <input type="button" value="导出为docx" @click="exportToDocx" />
-    <p contenteditable=true>这是一个可以编辑的段落</p>
+    <p contenteditable="true">这是一个可以编辑的段落</p>
   </div>
 </template>
 
@@ -63,49 +63,50 @@ export default {
       }
     },
     async handleFileUpload(file) {
-      const reader = new FileReader();
-      const that = this;
-      reader.readAsArrayBuffer(file);
-      reader.onload = async () => {
-        try {
-          const buffer = reader.result;
-          console.log(buffer);
-          // const tableStyleMap = [
-          //   // 将Word表格转换为HTML表格
-          //   "w:tblPrEx => table",
-          //   // 保持表格内文字默认转换为单元格内的段落
-          //   "w:tc => td",
-          //   "w:tr => tr",
-          // ];
-          // const result = await mammoth.convertToHtml({
-          //   arrayBuffer: buffer,
-          //   // 可选配置项，比如保留样式等
-          //   // styleMap: [
-          //   //   "p[style-name='Title'] => h1",
-          //   //   "p[style-name='Heading 1'] => h2",
-          //   // ],'
-          //   styleMap: tableStyleMap,
-          // });
-          // this.editorData = result.value;
-          // console.log(result.messages); // 输出转换过程中的警告和错误信息
-          const previewContainer = that.$refs.previewContainer;
-          // 渲染docx文件
-          renderAsync(buffer, previewContainer, {
-            className: "docx",
-            prefix: "myprefix-", // 可选，前缀用于生成的DOM元素ID
-            inWrapper: true, // 可选，是否包裹在一个div中
-          })
-            .then(() => {})
-            .catch((error) => {
-              console.error("Failed to render docx:", error);
-            });
-        } catch (error) {
-          console.error("Error converting file to HTML:", error);
-        }
-      };
-      reader.onerror = function (error) {
-        console.error("Error reading the file:", error);
-      };
+      debugger
+      const previewContainer = document.getElementById("perviewContainer");
+      // 渲染docx文件
+      renderAsync(file, previewContainer, {
+        className: "docx",
+        prefix: "myprefix-", // 可选，前缀用于生成的DOM元素ID
+        inWrapper: true, // 可选，是否包裹在一个div中
+      })
+        .then(() => {})
+        .catch((error) => {
+          console.error("Failed to render docx:", error);
+        });
+      // const reader = new FileReader();
+      // const that = this;
+      // reader.readAsArrayBuffer(file);
+      // reader.onload = async () => {
+      //   try {
+      //     const buffer = reader.result;
+      //     console.log(buffer);
+      //     const tableStyleMap = [
+      //       // 将Word表格转换为HTML表格
+      //       "w:tblPrEx => table",
+      //       // 保持表格内文字默认转换为单元格内的段落
+      //       "w:tc => td",
+      //       "w:tr => tr",
+      //     ];
+      //     const result = await mammoth.convertToHtml({
+      //       arrayBuffer: buffer,
+      //       // 可选配置项，比如保留样式等
+      //       // styleMap: [
+      //       //   "p[style-name='Title'] => h1",
+      //       //   "p[style-name='Heading 1'] => h2",
+      //       // ],'
+      //       styleMap: tableStyleMap,
+      //     });
+      //     this.editorData = result.value;
+      //     console.log(result.messages); // 输出转换过程中的警告和错误信息
+      //   } catch (error) {
+      //     console.error("Error converting file to HTML:", error);
+      //   }
+      // };
+      // reader.onerror = function (error) {
+      //   console.error("Error reading the file:", error);
+      // };
     },
     exportToDocx() {
       // 获取编辑器的HTML内容

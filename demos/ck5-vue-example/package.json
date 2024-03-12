@@ -16,6 +16,7 @@
     "@ckeditor/ckeditor5-paragraph": "^41.1.0",
     "@ckeditor/ckeditor5-theme-lark": "^41.1.0",
     "@ckeditor/ckeditor5-vue2": "^3.0.1",
+    "@onlyoffice/document-editor-vue": "^1.4.0",
     "core-js": "^3.8.3",
     "docx-preview": "^0.3.0",
     "file-saver": "^2.0.5",

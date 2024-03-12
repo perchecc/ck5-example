@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MicrosoftOffice协议 打开word</title>
+  </head>
+  <body>
+    <button onclick="openDoc()">打开word</button>
+    <script>
+      function openDoc() {
+        window.location.href = "ms-word:ofe|u|file://./cp-test.docx";
+      }
+    </script>
+  </body>
+</html>

@@ -120,7 +120,7 @@ export default {
     async loadAndPreviewDocx() {
       // 假设fileUrl是从某个地方获得的.docx文件路径或blob URL
       // var fileUrl =
-      //   "https://cdn.perche.cc/%E5%A1%91%E5%A3%B3%E6%96%AD%E8%B7%AF%E5%99%A8%E6%B5%8B%E8%AF%95%E6%A8%A1%E6%9D%BF%20-%20%E5%8F%B0%E5%8C%BA%28_20230607095909%29%20-%20%E5%89%AF%E6%9C%AC.docxF";
+      //   "https://cdn.perche.cc/%E5%A1%91%E5%A3%B3%E6%96%AD%E8%B7%AF%E5%99%A8%E6%B5%8B%E8%AF%95%E6%A8%A1%E6%9D%BF%20-%20%E5%8F%B0%E5%8C%BA%28_20230607095909%29%20-%20%E5%89%AF%E6%9C%AC.docx";
       // 获取容器元素
       const previewContainer = this.$refs.previewContainer;
       // 渲染docx文件
